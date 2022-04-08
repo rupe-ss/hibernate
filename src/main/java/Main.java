@@ -1,6 +1,7 @@
 import jdbc.DBConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -23,7 +24,7 @@ public class Main {
         int rows = st.executeUpdate(updateQuery);
         System.out.println("Number of rows affected: " + rows );*/
 
-        //How to write query when data is in Variables
+        /*//How to write query when data is in Variables
         String tableName = "Products";
         String query = "select * from " + tableName;
         Statement st = con.createStatement();
@@ -31,7 +32,23 @@ public class Main {
         rs.next();
         rs.next();
         String firstName = rs.getString("FirstName");
-        System.out.println(firstName);
+        System.out.println(firstName);*/
+
+        //Prepared Statements
+        int id = 3;
+        String firstName = "Rupa";
+        String lastName = "Thapa";
+        String address = "234 Dada Pari";
+        String city = "Chari";
+        String query = "insert into Products values(?,?,?,?,?)";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, id);
+        ps.setString(2, lastName);
+        ps.setString(3, firstName);
+        ps.setString(4, address);
+        ps.setString(5, city);
+        int count = ps.executeUpdate();
+        System.out.println("Row/s affected: " + count);
 
         /*
         We have 3 types of language in Sql
