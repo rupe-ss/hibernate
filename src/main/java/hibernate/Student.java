@@ -1,9 +1,25 @@
 package hibernate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
+
+    @Id
     int id;
     String name;
     double gpa;
+
+    public Student(int id, String name, double gpa) {
+        this.id = id;
+        this.name = name;
+        this.gpa = gpa;
+    }
+
+    public Student() {
+
+    }
 
     public int getId() {
         return id;
