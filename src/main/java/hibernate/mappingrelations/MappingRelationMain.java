@@ -8,8 +8,8 @@ import org.hibernate.cfg.Configuration;
 public class MappingRelationMain {
     public static void main(String[] args) {
 
-        Employee employee = new Employee(100, "Chad");
         Laptop laptop = new Laptop(1000, "Dell");
+        Employee employee = new Employee(100, "Chad", laptop);
 
         Configuration configuration = new Configuration().configure("embedded.cfg.xml").addAnnotatedClass(Employee.class).addAnnotatedClass(Laptop.class);
         SessionFactory sessionFactory = configuration.buildSessionFactory();
@@ -17,5 +17,8 @@ public class MappingRelationMain {
         Transaction transaction = session.beginTransaction();
 
         session.save(employee);
+        session.save(laptop);
+
+        transaction.commit();
     }
 }

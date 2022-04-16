@@ -1,6 +1,11 @@
 package hibernate.mappingrelations;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Laptop {
+    @Id
     private int lid;
     private String name;
 

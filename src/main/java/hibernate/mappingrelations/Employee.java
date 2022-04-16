@@ -1,8 +1,16 @@
 package hibernate.mappingrelations;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Employee {
+    @Id
     private int oid;
     private String name;
+    @OneToOne
+    private Laptop laptop;
 
     public Employee() {
     }
@@ -10,6 +18,12 @@ public class Employee {
     public Employee(int oid, String name) {
         this.oid = oid;
         this.name = name;
+    }
+
+    public Employee(int oid, String name, Laptop laptop) {
+        this.oid = oid;
+        this.name = name;
+        this.laptop = laptop;
     }
 
     public int getOid() {
@@ -26,6 +40,14 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
     }
 
     @Override
